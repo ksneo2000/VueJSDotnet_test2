@@ -5,9 +5,9 @@ using System.Threading.Tasks;
 
 namespace VueJSDotnet_test2
 {
-    public class TextWrite
+    public class TextDataWrite
     {
-
-        public string TextWR { get; set; }
+        public string TextDataWR { get; set; }
+        public DateTime TextDataData { get; set; }
     }
 }

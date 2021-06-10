@@ -10,21 +10,21 @@ namespace VueJSDotnet_test2.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class TextWriteController : ControllerBase
+    public class TextDataWriteController : ControllerBase
     {
        
        
 
         [HttpGet]
-        public TextWrite Get()
+        public TextDataWrite Get()
         {
-            using (var sr = new StreamReader("Resources\\Text_1.txt"))
+            using (var sr2 = new StreamReader("Resources\\Text_2.txt"))
             {
-                string text = sr.ReadToEnd();
-                return new TextWrite
+                string text = sr2.ReadToEnd();
+                return new TextDataWrite
                 {
-                    TextWR = text
-
+                    TextDataWR = text,
+                    TextDataData = DateTime.Today
                 };
             }
 

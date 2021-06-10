@@ -26,7 +26,11 @@
                         </li>
                         <li class="nav-item">
                             <router-link :to="{ name: 'Smile' }" class="nav-link text-dark">Smile</router-link>
-                        </li>                        
+                        </li>
+                        <li class="nav-item">
+                            <router-link :to="{ name: 'RegistrationTest' }" class="nav-link text-dark">Registration</router-link>
+                        </li>
+                        
                     </ul>
                 </div>
             </div>
