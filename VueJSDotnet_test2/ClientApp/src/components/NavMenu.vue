@@ -16,19 +16,12 @@
                     <ul class="navbar-nav flex-grow">
                         <li class="nav-item">
                             <router-link :to="{ name: 'Home' }" class="nav-link text-dark">Home</router-link>
-
-                        </li>
-                        <li class="nav-item">
-                            <router-link :to="{ name: 'Counter' }" class="nav-link text-dark">Counter</router-link>
                         </li>
                         <li class="nav-item">
                             <router-link :to="{ name: 'FetchData' }" class="nav-link text-dark">Fetch Data</router-link>
                         </li>
                         <li class="nav-item">
-                            <router-link :to="{ name: 'Smile' }" class="nav-link text-dark">Smile</router-link>
-                        </li>
-                        <li class="nav-item">
-                            <router-link :to="{ name: 'RegistrationTest' }" class="nav-link text-dark">Registration</router-link>
+                            <router-link :to="{ name: 'Registration' }" class="nav-link text-dark">Registration</router-link>
                         </li>
                         
                     </ul>

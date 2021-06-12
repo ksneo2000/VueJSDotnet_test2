@@ -21,6 +21,8 @@ namespace VueJSDotnet_test2.Controllers
             {
                 VueJSTestDB.Users.Add(user);
                 VueJSTestDB.SaveChanges();
+
+                var x = VueJSTestDB.Users.Where(user=>user.Name=="123");
             }
 
 /*           using (StreamWriter sw = new StreamWriter("Resources\\User.txt"))

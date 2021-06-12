@@ -1,6 +1,6 @@
 <template>
     <div class="hello">
-        <h1>{{ msg }}</h1>
+        
         <TextWrite :TextWR ="'uga-ga'"></TextWrite>
         
         <img src="../assets/logo.png" />
@@ -13,17 +13,17 @@
 </template>
 
 <script>
-    import TextWrite from './TextWrite.vue'
+    
 
     
 
 export default {
   name: 'Home',
   components: {
-      TextWrite
+      
   },
   props: {
-      msg: String,
+      
      
   }
 }

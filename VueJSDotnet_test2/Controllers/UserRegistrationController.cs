@@ -28,18 +28,23 @@ namespace VueJSDotnet_test2.Controllers
                 return new USerResult("<h1>you are not WRITE_</h1>");
             }
 
-            using (StreamWriter sw = new StreamWriter("Resources\\User.txt"))
-            {
-                //!ВЫПОНИЛ КАК МОГ создать экземпляр User, серилизовать его и сохранить полученную строку его в файл
-                var user = new User
+             var user = new User
                 {
                     Name = name,
                     Password = password
 
                 };
+            using (StreamWriter sw = new StreamWriter("Resources\\User.txt"))
+            {
+                //!ВЫПОНИЛ КАК МОГ создать экземпляр User, серилизовать его и сохранить полученную строку его в файл
+               
+
+
+
+ /* это у меня сериализация рабочая
                 string jsonString = JsonSerializer.Serialize<User>(user);
                 sw.WriteLine(jsonString);
-            }
+ */           }
             return new USerResult("<h1>SAVE OKKK!!!</h1>");
 
         }

@@ -1,14 +1,13 @@
 ﻿<template>
-
     <div class="hello">
 
         <h1>Registration</h1>
 
-        <form action="UserRegistration"  method="get">
-            <p><b>ЛОГИН:</b><br></p>
-            <input type="text" id="name" name="name" size="40" />
+        <form method="post" name="test1">
+            <p><b>Логин:</b><br></p>
+            <input v-model="name" type="text" id="name" name="name" size="40" />
             <p><b>Password:</b><br></p>
-            <input type=password id="password" name="password" size="38" />
+            <input v-model="password" type=password id="password" name="password" size="38" />
             <input type="button" value=" ">
             <br>
             <br>
@@ -24,9 +23,12 @@
 </template>
 
 <script>
-    
+    import axios from 'axios'
 
-export default {
+
+ export default {
+
+
   name: 'Registration',
   components: {
       
@@ -36,13 +38,17 @@ export default {
   },
   methods: {
       clickone: function () {
-          console.log("YYYYYY");
-          
-          
+          const article = { name: this.name, password: this.password };
+          axios.post("/UserRegistrationTest", article)
+              .then(response => this.articleId = response.data.id);
+          console.log(article);
+
       }
-
-
+      
+          
+          
   }
+        
   
 
 }
