@@ -42,8 +42,19 @@
       clickone: function () {
           const article = { name: this.name, password: this.password };
 
-          axios.post("/UserRegistrationTest", article)
-              .then(response => this.articleId = response.data.id);
+          
+          axios({
+              method: 'post12',
+              url: '/UserRegistration',
+              data: article
+
+          })
+              .then(function (response) {
+                  console.log(response);
+              })
+              .catch(function (error) {
+                  console.log(error);
+              });
 
           console.log(article);
 

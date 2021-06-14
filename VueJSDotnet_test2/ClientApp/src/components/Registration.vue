@@ -42,7 +42,7 @@
   methods: {
       clickone: function () {
           const article = { name: this.name, password: this.password };
-          axios.post("/UserRegistrationTest", article)
+          axios.post("/UserRegistration", article)
               .then(response => this.articleId = response.data.id);
           console.log(article);
 

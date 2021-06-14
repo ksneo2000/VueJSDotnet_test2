@@ -13,40 +13,20 @@ namespace VueJSDotnet_test2.Controllers
     [Route("[controller]")]
     public class UserRegistrationController : ControllerBase
     {
-        [HttpGet]
-        // поменять на post
-
-        public USerResult  Get (string name, string password)
+        [HttpPost]
+        
+        public void Post12 ([FromBody] User user)
         {
-            // написать проверку login и password гомно или нет
-            if (name == "a")
+             using(var VueJSTestDB = new VueJSTestContext())
             {
-                return new USerResult("<h1>you write_ A</h1>");
-            }
-            if (name == null)
-            {
-                return new USerResult("<h1>you are not WRITE_</h1>");
+                VueJSTestDB.Users.Add(user);
+                VueJSTestDB.SaveChanges();
+
+                var x = VueJSTestDB.Users.Where(user=>user.Name=="123");
             }
 
-             var user = new User
-                {
-                    Name = name,
-                    Password = password
 
-                };
-            using (StreamWriter sw = new StreamWriter("Resources\\User.txt"))
-            {
-                //!ВЫПОНИЛ КАК МОГ создать экземпляр User, серилизовать его и сохранить полученную строку его в файл
-               
-
-
-
- /* это у меня сериализация рабочая
-                string jsonString = JsonSerializer.Serialize<User>(user);
-                sw.WriteLine(jsonString);
- */           }
-            return new USerResult("<h1>SAVE OKKK!!!</h1>");
-
+            
         }
-    }
+  }
 }
