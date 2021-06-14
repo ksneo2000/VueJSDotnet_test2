@@ -1,17 +1,16 @@
 ﻿<template>
     <div class="hello">
 
-        <h1>Registration</h1>
+        <h1>Authorization</h1>
 
-        <form method="post" name="test1">
+        <form  method="post" name="test1">
             <p><b>Введите логин:</b><br></p>
             <input v-model="name" type="text" id="name" name="name" size="40" />
             <p><b>Введите пароль:</b><br></p>
             <input v-model="password" type=password id="password" name="password" size="38" />
             <input type="button" value=" ">
-            <p><b>Введите повторно пароль:</b><br></p>
-            <input v-model="password2" type=password id="password2" name="password2" size="38" />
-            <input type="button" value=" ">
+            <p><b>Если нет учетной записи пройдите регистрацию:</b><br></p>
+            <p><b><a href="Registration">ТУТ</a></b><br></p>
             <br>
             <br>
             <button v-on:click="clickone">OK</button>
@@ -42,8 +41,10 @@
   methods: {
       clickone: function () {
           const article = { name: this.name, password: this.password };
+
           axios.post("/UserRegistrationTest", article)
               .then(response => this.articleId = response.data.id);
+
           console.log(article);
 
       }

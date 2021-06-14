@@ -3,6 +3,7 @@ import Home from "@/components/Home.vue";
 import Counter from "@/components/Counter.vue";
 import FetchData from "@/components/FetchData.vue";
 import Registration from "@/components/Registration.vue";
+import Authorization from "@/components/Authorization.vue";
 
 
 const routes = [
@@ -25,6 +26,12 @@ const routes = [
         path: "/Registration",
         name: "Registration",
         component: Registration,
+
+    },
+    {
+        path: "/Authorization",
+        name: "Authorization",
+        component: Authorization,
 
     }
 ];

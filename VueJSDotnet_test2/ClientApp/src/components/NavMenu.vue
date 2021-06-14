@@ -1,4 +1,4 @@
-<template>
+﻿<template>
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
@@ -21,7 +21,7 @@
                             <router-link :to="{ name: 'FetchData' }" class="nav-link text-dark">Fetch Data</router-link>
                         </li>
                         <li class="nav-item">
-                            <router-link :to="{ name: 'Registration' }" class="nav-link text-dark">Registration</router-link>
+                            <router-link :to="{ name: 'Authorization' }" class="nav-link text-dark">Вход</router-link>
                         </li>
                         
                     </ul>

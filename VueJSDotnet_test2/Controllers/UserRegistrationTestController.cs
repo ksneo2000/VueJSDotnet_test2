@@ -15,7 +15,7 @@ namespace VueJSDotnet_test2.Controllers
     {
         [HttpPost]
         
-        public IActionResult Post ([FromBody] User user)
+        public string Post ([FromBody] User user)
         {
              using(var VueJSTestDB = new VueJSTestContext())
             {
@@ -24,18 +24,19 @@ namespace VueJSDotnet_test2.Controllers
 
                 var x = VueJSTestDB.Users.Where(user=>user.Name=="123");
             }
+            Console.WriteLine("gopa");
 
-/*           using (StreamWriter sw = new StreamWriter("Resources\\User.txt"))
-            {
+            /*           using (StreamWriter sw = new StreamWriter("Resources\\User.txt"))
+                        {
 
-                //!ВЫПОНИЛ КАК МОГ создать экземпляр User, серилизовать его и сохранить полученную строку его в файл
+                            //!ВЫПОНИЛ КАК МОГ создать экземпляр User, серилизовать его и сохранить полученную строку его в файл
 
-                string jsonString = JsonSerializer.Serialize<User>(user);
-                sw.WriteLine(jsonString);
+                            string jsonString = JsonSerializer.Serialize<User>(user);
+                            sw.WriteLine(jsonString);
 
-            }
-*/
-            return Ok(user);
+                        }
+            */
+            return "сука";
         }
   }
 }
