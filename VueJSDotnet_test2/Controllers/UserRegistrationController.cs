@@ -13,20 +13,30 @@ namespace VueJSDotnet_test2.Controllers
     [Route("[controller]")]
     public class UserRegistrationController : ControllerBase
     {
-        [HttpPost]
-        
-        public void Post12 ([FromBody] User user)
+        [HttpPost("Autorization")]
+
+        public string Autorization([FromBody] User user)
         {
-             using(var VueJSTestDB = new VueJSTestContext())
+            return "она живая";
+
+        }
+
+        [HttpPost("Registration")]
+
+        public IActionResult Registration([FromBody] User user)
+        {
+
+            using (var VueJSTestDB = new VueJSTestContext())
             {
                 VueJSTestDB.Users.Add(user);
                 VueJSTestDB.SaveChanges();
 
-                var x = VueJSTestDB.Users.Where(user=>user.Name=="123");
+                
             }
 
-
+            return Ok(user);
             
         }
-  }
+
+    }
 }

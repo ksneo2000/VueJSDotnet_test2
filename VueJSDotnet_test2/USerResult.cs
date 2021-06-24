@@ -19,12 +19,8 @@ namespace VueJSDotnet_test2
 
         public override async Task ExecuteResultAsync(ActionContext context)
         {
-            string fullHtmlCode = "<!DOCTYPE html><html><head>";
-            fullHtmlCode += "<title>Главная страница</title>";
-            fullHtmlCode += "<meta Content-Type=application/json />";
-            fullHtmlCode += "</head> <body>";
-            fullHtmlCode += UserReply;
-            fullHtmlCode += "</body></html>";
+            string fullHtmlCode = UserReply;
+            
             await context.HttpContext.Response.WriteAsync(fullHtmlCode);
         }
     }

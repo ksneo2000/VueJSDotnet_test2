@@ -3,18 +3,18 @@
 
         <h1>Authorization</h1>
 
-        <form  method="post" name="test1">
-            <p><b>Введите логин:</b><br></p>
-            <input v-model="name" type="text" id="name" name="name" size="40" />
-            <p><b>Введите пароль:</b><br></p>
-            <input v-model="password" type=password id="password" name="password" size="38" />
-            <input type="button" value=" ">
-            <p><b>Если нет учетной записи пройдите регистрацию:</b><br></p>
-            <p><b><a href="Registration">ТУТ</a></b><br></p>
-            <br>
-            <br>
-            <button v-on:click="clickone">OK</button>
-        </form>
+       
+        <p><b>Введите логин:</b><br></p>
+        <input v-model="name" type="text" id="name" name="name" size="40" />
+        <p><b>Введите пароль:</b><br></p>
+        <input v-model="password" type=password id="password" name="password" size="38" />
+        <input type="button" value=" ">
+        <p><b>Если нет учетной записи пройдите регистрацию:</b><br></p>
+        <p><b><a href="Registration">ТУТ</a></b><br></p>
+        <br>
+        <br>
+        <button v-on:click="clickone">OK</button>
+       
 
         <br>
 
@@ -26,12 +26,13 @@
 
 <script>
     import axios from 'axios'
+    import router from "../router/index.js";
 
 
  export default {
 
 
-  name: 'Registration',
+  name: 'Autorization',
   components: {
       
   },
@@ -44,13 +45,14 @@
 
           
           axios({
-              method: 'post12',
-              url: '/UserRegistration',
+              method: 'Post',
+              url: '/UserRegistration/Autorization',
               data: article
 
           })
               .then(function (response) {
-                  console.log(response);
+                  console.log(response.data);
+                  router.push({ path: '/' })
               })
               .catch(function (error) {
                   console.log(error);

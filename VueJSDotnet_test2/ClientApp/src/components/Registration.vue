@@ -3,19 +3,19 @@
 
         <h1>Registration</h1>
 
-        <form method="post" name="test1">
-            <p><b>Введите логин:</b><br></p>
-            <input v-model="name" type="text" id="name" name="name" size="40" />
-            <p><b>Введите пароль:</b><br></p>
-            <input v-model="password" type=password id="password" name="password" size="38" />
-            <input type="button" value=" ">
-            <p><b>Введите повторно пароль:</b><br></p>
-            <input v-model="password2" type=password id="password2" name="password2" size="38" />
-            <input type="button" value=" ">
-            <br>
-            <br>
-            <button v-on:click="clickone">OK</button>
-        </form>
+       
+        <p><b>Введите логин:</b><br></p>
+        <input v-model="name" type="text" id="name" name="name" size="40" />
+        <p><b>Введите пароль:</b><br></p>
+        <input v-model="password" type=password id="password" name="password" size="38" />
+        <input type="button" value=" ">
+        <p><b>Введите повторно пароль:</b><br></p>
+        <input v-model="password2" type=password id="password2" name="password2" size="38" />
+        <input type="button" value=" ">
+        <br>
+        <br>
+        <button v-on:click="clickone">OK</button>
+     
 
         <br>
 
@@ -27,33 +27,42 @@
 
 <script>
     import axios from 'axios'
+    import router from "../router/index.js";
 
 
- export default {
+    export default {
 
 
-  name: 'Registration',
-  components: {
-      
-  },
-  props: {
-      
-  },
-  methods: {
-      clickone: function () {
-          const article = { name: this.name, password: this.password };
-          axios.post("/UserRegistration", article)
-              .then(response => this.articleId = response.data.id);
-          console.log(article);
+        name: 'Registration',
+        components: {
 
-      }
-      
-          
-          
-  }
-        
-  
+        },
+        props: {
 
+        },
+        methods: {
+            clickone: function () {
+                const article = { name: this.name, password: this.password };
+
+
+                axios({
+                    method: 'Post',
+                    url: '/UserRegistration/Registration',
+                    data: article
+
+                })
+                    .then(function (response) {
+                        console.log(response.data);
+                        router.push({ path: '/' })
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                    });
+
+                console.log(article);
+
+            }
+        }
 }
 </script>
 
