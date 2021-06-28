@@ -17,26 +17,40 @@ namespace VueJSDotnet_test2.Controllers
 
         public string Autorization([FromBody] User user)
         {
+            
+            
             return "она живая";
 
         }
 
         [HttpPost("Registration")]
 
-        public IActionResult Registration([FromBody] User user)
+        public string Registration([FromBody] User_Reg user_Reg)
         {
-
-            using (var VueJSTestDB = new VueJSTestContext())
+          
+            if (user_Reg.Password != user_Reg.Password2)
             {
-                VueJSTestDB.Users.Add(user);
-                VueJSTestDB.SaveChanges();
-
-                
+                return "Введеные пароли не совпадают";
             }
 
-            return Ok(user);
+            var User1 = new User();
+            User1.Name = user_Reg.Name;
+            User1.Password = user_Reg.Password;
             
+            using (var VueJSTestDB = new VueJSTestContext())
+            {
+                VueJSTestDB.Users.Add(User1);
+                VueJSTestDB.SaveChanges();
+            }
+
+            return "Пользователь " + User1.Name + " добавлен в базу";
         }
+
+                           
+                       
+
+            
+        
 
     }
 }

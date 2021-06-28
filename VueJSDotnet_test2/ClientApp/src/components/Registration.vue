@@ -42,7 +42,7 @@
         },
         methods: {
             clickone: function () {
-                const article = { name: this.name, password: this.password };
+                const article = { name: this.name, password: this.password, password2: this.password2 };
 
 
                 axios({
