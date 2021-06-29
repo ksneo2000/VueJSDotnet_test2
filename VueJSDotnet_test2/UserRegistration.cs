@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace VueJSDotnet_test2
 {
-    public class User_Reg
+    public class UserRegistration
     {
         
         public int ID { get; set; }

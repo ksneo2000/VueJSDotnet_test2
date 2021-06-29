@@ -9,41 +9,56 @@ using System.Threading.Tasks;
 
 namespace VueJSDotnet_test2.Controllers
 {
+   
     [ApiController]
     [Route("[controller]")]
+    
     public class UserRegistrationController : ControllerBase
     {
+        private string searchRecordBD()
+        {
+            return "а как?";
+        }
         [HttpPost("Autorization")]
 
-        public string Autorization([FromBody] User user)
+        public string Autorization([FromBody] User imputUser)
         {
-            
-            
+
+            using (var vueJSTestDB = new VueJSTestContext())
+            {
+                if (vueJSTestDB.Users.SingleOrDefault(user => user.Name == imputUser.Name && user.Password == imputUser.Password) != null)
+                {
+                    return "Пользователь " + imputUser.Name + " приветствуем тебя";
+                }
+                
+            }
             return "она живая";
 
         }
 
         [HttpPost("Registration")]
 
-        public string Registration([FromBody] User_Reg user_Reg)
+        public string Registration([FromBody] UserRegistration userRegistration)
         {
           
-            if (user_Reg.Password != user_Reg.Password2)
+            if (userRegistration.Password != userRegistration.Password2)
             {
                 return "Введеные пароли не совпадают";
             }
 
-            var User1 = new User();
-            User1.Name = user_Reg.Name;
-            User1.Password = user_Reg.Password;
-            
-            using (var VueJSTestDB = new VueJSTestContext())
+            var newUser = new User
             {
-                VueJSTestDB.Users.Add(User1);
-                VueJSTestDB.SaveChanges();
+                Name = userRegistration.Name,
+                Password = userRegistration.Password
+            };
+
+            using (var vueJSTestDB = new VueJSTestContext())
+            {
+                vueJSTestDB.Users.Add(newUser);
+                vueJSTestDB.SaveChanges();
             }
 
-            return "Пользователь " + User1.Name + " добавлен в базу";
+            return "Пользователь " + newUser.Name + " добавлен в базу";
         }
 
                            
