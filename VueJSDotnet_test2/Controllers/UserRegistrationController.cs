@@ -15,24 +15,31 @@ namespace VueJSDotnet_test2.Controllers
     
     public class UserRegistrationController : ControllerBase
     {
-        private string searchRecordBD()
+        private bool searchRecordBD(string login, string password)
         {
-            return "а как?";
+            using (var vueJSTestDB = new VueJSTestContext())
+            {
+                if (vueJSTestDB.Users.SingleOrDefault(user => user.Name == login && user.Password == password) != null)
+                {
+                    return true;
+                }
+            }
+            return false;
+
         }
         [HttpPost("Autorization")]
 
         public string Autorization([FromBody] User imputUser)
         {
-
-            using (var vueJSTestDB = new VueJSTestContext())
-            {
-                if (vueJSTestDB.Users.SingleOrDefault(user => user.Name == imputUser.Name && user.Password == imputUser.Password) != null)
+  
+            
+                if (searchRecordBD(imputUser.Name, imputUser.Password)==true)
                 {
                     return "Пользователь " + imputUser.Name + " приветствуем тебя";
                 }
                 
-            }
-            return "она живая";
+            
+            return "Пользователя не зарегистрирован.";
 
         }
 
@@ -40,6 +47,10 @@ namespace VueJSDotnet_test2.Controllers
 
         public string Registration([FromBody] UserRegistration userRegistration)
         {
+            if (searchRecordBD(userRegistration.Name,userRegistration.Password)==true)
+            {
+                return "Пользователь уже заригистрирован";
+            }
           
             if (userRegistration.Password != userRegistration.Password2)
             {
