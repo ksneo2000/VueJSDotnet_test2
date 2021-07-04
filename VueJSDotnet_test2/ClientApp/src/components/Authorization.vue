@@ -52,7 +52,7 @@
           })
               .then(function (response) {
                   console.log(response.data);
-                  router.push({ path: '/' })
+                  router.push({ path: '/Answer' })
               })
               .catch(function (error) {
                   console.log(error);

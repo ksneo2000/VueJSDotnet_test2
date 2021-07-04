@@ -32,7 +32,7 @@
 
 <script>
     import axios from 'axios'
- //   import router from "../router/index.js";
+    import router from "../router/index.js";
 
 
     export default {
@@ -67,7 +67,7 @@
                     })
                         .then(function (response) {
                             console.log(response.data);
- //                           router.push({ path: '/' })
+                            router.push({ path: '/Answer' })
                         })
                         .catch(function (error) {
                             console.log(error);

@@ -4,6 +4,8 @@ import Counter from "@/components/Counter.vue";
 import FetchData from "@/components/FetchData.vue";
 import Registration from "@/components/Registration.vue";
 import Authorization from "@/components/Authorization.vue";
+import Answer from "@/components/Answer.vue";
+
 
 
 const routes = [
@@ -32,6 +34,12 @@ const routes = [
         path: "/Authorization",
         name: "Authorization",
         component: Authorization,
+
+    },
+    {
+        path: "/Answer",
+        name: "Answer",
+        component: Answer,
 
     }
 ];
