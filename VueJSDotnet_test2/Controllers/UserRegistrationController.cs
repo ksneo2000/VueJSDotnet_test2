@@ -15,7 +15,7 @@ namespace VueJSDotnet_test2.Controllers
     
     public class UserRegistrationController : ControllerBase
     {
-        private bool searchRecordBD(string login, string password)
+        private bool SearchRecordDB(string login, string password)
         {
             using (var vueJSTestDB = new VueJSTestContext())
             {
@@ -31,9 +31,9 @@ namespace VueJSDotnet_test2.Controllers
 
         public string Autorization([FromBody] User imputUser)
         {
-  
+  // проверка на null
             
-                if (searchRecordBD(imputUser.Name, imputUser.Password)==true)
+                if (SearchRecordDB(imputUser.Name, imputUser.Password)==true)
                 {
                     return "Пользователь " + imputUser.Name + " приветствуем тебя";
                 }
@@ -47,7 +47,7 @@ namespace VueJSDotnet_test2.Controllers
 
         public string Registration([FromBody] UserRegistration userRegistration)
         {
-            if (searchRecordBD(userRegistration.Name,userRegistration.Password)==true)
+            if (SearchRecordDB(userRegistration.Name,userRegistration.Password)==true)
             {
                 return "Пользователь уже заригистрирован";
             }

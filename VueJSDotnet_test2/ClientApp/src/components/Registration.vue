@@ -14,7 +14,9 @@
         <input type="button" value=" ">
         <br>
         <br>
-        <span id='hidden' style="display: none">Введенные Вами пароли не совпадают.</span>
+        <span id='hiddenTwoPassword' style="display: none">Введенные Вами пароли не совпадают.</span>
+        <span id='hiddenNullName' style="display: none">Поле Имя не может быть пустым.</span>
+        <span id='hiddenNullPassword' style="display: none">Поле Пароль не может быть пустым.</span>
         <br>
         <br>
         <button v-on:click="clickone">OK</button>
@@ -32,7 +34,7 @@
 
 <script>
     import axios from 'axios'
-    import router from "../router/index.js";
+   // import router from "../router/index.js";
 
 
     export default {
@@ -47,11 +49,12 @@
         },
         methods: {
             clickone: function () {
-                var sp = document.getElementById('hidden');
+                // добавить проверку на пустоту полей name и password 
+                var spTwoPassword = document.getElementById('hiddenTwoPassword');
                 if (this.password != this.password2)
                 {
                     
-                    sp.removeAttribute("style");
+                    spTwoPassword.removeAttribute("style");
                 }
                 else {
 
@@ -67,7 +70,7 @@
                     })
                         .then(function (response) {
                             console.log(response.data);
-                            router.push({ path: '/Answer' })
+                         //   router.push({ path: '/Answer' })
                         })
                         .catch(function (error) {
                             console.log(error);
