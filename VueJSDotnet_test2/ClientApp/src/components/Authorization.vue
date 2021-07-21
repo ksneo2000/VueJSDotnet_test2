@@ -42,8 +42,7 @@
   methods: {
       clickone: function () {
           const article = { name: this.name, password: this.password };
-
-          
+         
           axios({
               method: 'Post',
               url: '/UserRegistration/Autorization',
@@ -52,7 +51,8 @@
           })
               .then(function (response) {
                   console.log(response.data);
-                  router.push({ path: '/Answer' })
+
+                  router.push({ path: '/Answer/' + response.data})
               })
               .catch(function (error) {
                   console.log(error);

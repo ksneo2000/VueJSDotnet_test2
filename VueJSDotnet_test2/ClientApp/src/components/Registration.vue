@@ -14,9 +14,7 @@
         <input type="button" value=" ">
         <br>
         <br>
-        <span id='hiddenTwoPassword' style="display: none">Введенные Вами пароли не совпадают.</span>
-        <span id='hiddenNullName' style="display: none">Поле Имя не может быть пустым.</span>
-        <span id='hiddenNullPassword' style="display: none">Поле Пароль не может быть пустым.</span>
+        <span id='hiddenTwoPassword' style="display: none">{{errorMessage}}</span>
         <br>
         <br>
         <button v-on:click="clickone">OK</button>
@@ -41,6 +39,12 @@
 
 
         name: 'Registration',
+        data() {
+            return {
+                errorMessage: "",
+               
+            }
+        },
         components: {
 
         },
@@ -50,17 +54,28 @@
         methods: {
             clickone: function () {
                 // добавить проверку на пустоту полей name и password 
+                this.errorMessage = ""
                 var spTwoPassword = document.getElementById('hiddenTwoPassword');
+                if (this.name == "")
+                {
+                    this.errorMessage = "Поле Логин не должно быть пустым";
+                    
+                }
+                if (this.password == "")
+                {
+                    this.errorMessage = "Поле Пароль не должно быть пустым";
+                    
+                }
                 if (this.password != this.password2)
                 {
+                    this.errorMessage = "Вы ввели несовпадающие пароли";
                     
-                    spTwoPassword.removeAttribute("style");
                 }
-                else {
+                if (this.errorMessage == "") {
 
-                    sp.setAttribute('style',"display: none");
+                    spTwoPassword.setAttribute('style', "display: none");
                     const article = { name: this.name, password: this.password, password2: this.password2 };
-
+                    
 
                     axios({
                         method: 'Post',
@@ -70,13 +85,17 @@
                     })
                         .then(function (response) {
                             console.log(response.data);
-                         //   router.push({ path: '/Answer' })
+                            //   router.push({ path: '/Answer' })
                         })
                         .catch(function (error) {
                             console.log(error);
                         });
 
                     console.log(article);
+              
+                }
+                else {
+                    spTwoPassword.removeAttribute("style");
                 }
 
             }

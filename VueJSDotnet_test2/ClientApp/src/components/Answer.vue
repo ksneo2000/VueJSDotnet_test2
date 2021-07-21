@@ -1,12 +1,14 @@
 ﻿<template>
-    <div><span>{{ msg }}</span></div>
+    <h1>Личный кабинет</h1>
+    <h2>Приветствуем</h2>
+    
 </template>
 
 <script>
     export default {
         name: "Answer",
         data() {
-            msg: 'hello'
+           
         },
         methods: {
            
@@ -14,5 +16,7 @@
         }
     }
 </script>
+
+
 
 

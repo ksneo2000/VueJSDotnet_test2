@@ -4,6 +4,8 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Security.Cryptography;
+using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 
@@ -27,26 +29,44 @@ namespace VueJSDotnet_test2.Controllers
             return false;
 
         }
+
+        public static string GetHash(string password)
+        {
+            using (var hash = SHA1.Create())
+            {
+                return string.Concat(hash.ComputeHash(Encoding.UTF8.GetBytes(password)).Select(x => x.ToString("X2")));
+            }
+        }
+
+
         [HttpPost("Autorization")]
 
         public string Autorization([FromBody] User imputUser)
         {
-  // проверка на null
+            // проверка на null
+
+            imputUser.Password = GetHash(imputUser.Password);
             
                 if (SearchRecordDB(imputUser.Name, imputUser.Password)==true)
                 {
-                    return "Пользователь " + imputUser.Name + " приветствуем тебя";
+                    using (var vueJSTestDB = new VueJSTestContext())
+                    {
+                                      
+                    return "" + vueJSTestDB.Users.SingleOrDefault(user => user.Name == imputUser.Name && user.Password == imputUser.Password).ID;
+                    }
                 }
-                
-            
+   
             return "Пользователя не зарегистрирован.";
-
         }
+
+        
 
         [HttpPost("Registration")]
 
         public string Registration([FromBody] UserRegistration userRegistration)
         {
+             
+
             if (SearchRecordDB(userRegistration.Name,userRegistration.Password)==true)
             {
                 return "Пользователь уже заригистрирован";
@@ -56,6 +76,8 @@ namespace VueJSDotnet_test2.Controllers
             {
                 return "Введеные пароли не совпадают";
             }
+
+            userRegistration.Password = GetHash(userRegistration.Password);
 
             var newUser = new User
             {
