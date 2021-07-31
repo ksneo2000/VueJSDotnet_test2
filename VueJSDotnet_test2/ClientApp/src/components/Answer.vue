@@ -20,7 +20,7 @@
         methods: {
             rForecasts: function () {
                 //undone необходимо в id сохранить int значение тогда не будет проблемы с запросом post answer
-                const article = { id: this.$route.params.id};
+                const article = { id: + this.$route.params.id};
                 //TODO добавить метод для отправки в usercontroller данных   
                 axios({
                     method: 'Post',
