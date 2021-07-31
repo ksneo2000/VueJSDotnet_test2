@@ -52,7 +52,7 @@ namespace VueJSDotnet_test2.Controllers
                     using (var vueJSTestDB = new VueJSTestContext())
                     {
                                       
-                    return "" + vueJSTestDB.Users.SingleOrDefault(user => user.Name == imputUser.Name && user.Password == imputUser.Password).ID;
+                    return vueJSTestDB.Users.SingleOrDefault(user => user.Name == imputUser.Name && user.Password == imputUser.Password).ID.ToString();
                     }
                 }
    
@@ -93,12 +93,26 @@ namespace VueJSDotnet_test2.Controllers
 
             return "Пользователь " + newUser.Name + " добавлен в базу";
         }
+       
+        [HttpPost("Answer")]
 
-                           
-                       
+        public string Answer([FromBody] User imputUser)
+        {
 
+            using (var vueJSTestDB = new VueJSTestContext())
+            {
+            if (vueJSTestDB.Users.SingleOrDefault(user => user.ID == imputUser.ID ) != null)
+                {
+                    return "работает";
+                }
+
+
+            }
             
-        
+            
+
+            return "не прошло";
+        }
 
     }
 }
