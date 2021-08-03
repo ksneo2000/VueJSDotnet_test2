@@ -96,22 +96,23 @@ namespace VueJSDotnet_test2.Controllers
        
         [HttpPost("Answer")]
 
-        public string Answer([FromBody] User imputUser)
+        public User Answer([FromBody] User imputUser)
         {
-
+            var vrUser = new User();
             using (var vueJSTestDB = new VueJSTestContext())
             {
             if (vueJSTestDB.Users.SingleOrDefault(user => user.ID == imputUser.ID ) != null)
                 {
-                    return "работает";
+                    vrUser = vueJSTestDB.Users.SingleOrDefault(user => user.ID == imputUser.ID);
+                    return vrUser;
                 }
 
-
+            
             }
             
             
 
-            return "не прошло";
+            return vrUser;
         }
 
     }
