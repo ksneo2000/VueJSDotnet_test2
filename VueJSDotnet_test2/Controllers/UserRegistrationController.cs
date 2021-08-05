@@ -94,16 +94,22 @@ namespace VueJSDotnet_test2.Controllers
             return "Пользователь " + newUser.Name + " добавлен в базу";
         }
        
+ 
         [HttpPost("Answer")]
 
         public User Answer([FromBody] User imputUser)
         {
+            
             var vrUser = new User();
             using (var vueJSTestDB = new VueJSTestContext())
             {
             if (vueJSTestDB.Users.SingleOrDefault(user => user.ID == imputUser.ID ) != null)
                 {
-                    vrUser = vueJSTestDB.Users.SingleOrDefault(user => user.ID == imputUser.ID);
+                 //up
+                    vrUser.ID = vueJSTestDB.Users.SingleOrDefault(user => user.ID == imputUser.ID).ID;
+                    vrUser.Name = vueJSTestDB.Users.SingleOrDefault(user => user.ID == imputUser.ID).Name;
+                    vrUser.Surname = vueJSTestDB.Users.SingleOrDefault(user => user.ID == imputUser.ID).Surname;
+                    vrUser.Email = vueJSTestDB.Users.SingleOrDefault(user => user.ID == imputUser.ID).Email;
                     return vrUser;
                 }
 
@@ -111,6 +117,50 @@ namespace VueJSDotnet_test2.Controllers
             }
             
             
+
+            return vrUser;
+        }
+        [HttpPost("AnswerEdit")]
+
+        public User AnswerEdit([FromBody] User imputUser)
+        {
+            // HACK
+            var vrUser = new User();
+            using (var vueJSTestDB = new VueJSTestContext())
+            {
+                if (vueJSTestDB.Users.SingleOrDefault(user => user.ID == imputUser.ID) != null)
+                {
+                    vrUser.ID = vueJSTestDB.Users.SingleOrDefault(user => user.ID == imputUser.ID).ID;
+                    vrUser.Name = vueJSTestDB.Users.SingleOrDefault(user => user.ID == imputUser.ID).Name;
+                    return vrUser;
+                }
+
+
+            }
+
+
+
+            return vrUser;
+        }
+        [HttpPost("AnswerDelete")]
+
+        public User AnswerDelete([FromBody] User imputUser)
+        {
+            // HACK
+            var vrUser = new User();
+            using (var vueJSTestDB = new VueJSTestContext())
+            {
+                if (vueJSTestDB.Users.SingleOrDefault(user => user.ID == imputUser.ID) != null)
+                {
+                    vrUser.ID = vueJSTestDB.Users.SingleOrDefault(user=>user.ID==imputUser.ID).ID;
+                    vrUser.Name = vueJSTestDB.Users.SingleOrDefault(user => user.ID == imputUser.ID).Name;
+                    return vrUser;
+                }
+
+
+            }
+
+
 
             return vrUser;
         }

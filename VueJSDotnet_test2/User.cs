@@ -12,6 +12,10 @@ namespace VueJSDotnet_test2
         public string Name { get; set; }
 
         // вставить проверку по Get и Set на null
+
+        public string Surname { get; set; }
+
+        public string Email { get; set; }
         
         public string Password { get; set; }
 

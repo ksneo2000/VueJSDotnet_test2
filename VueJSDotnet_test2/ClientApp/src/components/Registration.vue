@@ -6,6 +6,13 @@
 
         <p><b>Введите логин:</b><br></p>
         <input v-model="name" type="text" id="name" name="name" size="40" />
+        
+        <p><b>Введите Фамилию:</b><br></p>
+        <input v-model="surname" type="text" id="surname" name="surname" size="40" />
+
+        <p><b>Введите E-mail:</b><br></p>
+        <input v-model="email" type="text" id="email" name="email" size="40" />
+
         <p><b>Введите пароль:</b><br></p>
         <input v-model="password" type=password id="password" name="password" size="38" />
         <input type="button" value=" ">
@@ -74,7 +81,13 @@
                 if (this.errorMessage == "") {
 
                     spTwoPassword.setAttribute('style', "display: none");
-                    const article = { name: this.name, password: this.password, password2: this.password2 };
+                    const article = {
+                        name: this.name,
+                        password: this.password,
+                        password2: this.password2,
+                        surname: this.surname,
+                        email: this.email
+                    };
                     
 
                     axios({
