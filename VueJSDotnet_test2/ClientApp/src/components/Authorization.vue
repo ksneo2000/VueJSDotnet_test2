@@ -5,15 +5,15 @@
 
        
         <p><b>Введите логин:</b><br></p>
-        <input v-model="name" type="text" id="name" name="name" size="40" />
+        <input class="input" v-model="name" type="text" id="name" name="name" />
         <p><b>Введите пароль:</b><br></p>
-        <input v-model="password" type=password id="password" name="password" size="38" />
-        <input type="button" value=" ">
+        <input class="input" v-model="password" type=password id="password" name="password" size="38" />
+        <my-button>O</my-button>
         <p><b>Если нет учетной записи пройдите регистрацию:</b><br></p>
         <p><b><a href="Registration">ТУТ</a></b><br></p>
         <br>
         <br>
-        <button v-on:click="clickone">OK</button>
+        <my-button v-on:click="clickone">OK</my-button>
        
 
         <br>
@@ -27,15 +27,16 @@
 <script>
     import axios from 'axios'
     import router from "../router/index.js";
-
+    import MyButton from './UI/MyButton.vue'
 
  export default {
 
 
   name: 'Autorization',
-  components: {
-      
-  },
+        components: {
+
+            MyButton,
+         },
   props: {
       
   },
@@ -87,4 +88,10 @@ li {
 a {
   color: #42b983;
 }
+    .input {
+        width: 50%;
+        border: 1px solid teal;
+        padding: 10px 15px;
+        margin-top: 15px;
+    }
 </style>

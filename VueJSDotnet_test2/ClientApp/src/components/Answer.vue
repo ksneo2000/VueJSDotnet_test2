@@ -1,18 +1,42 @@
 ﻿<template>
-    <h1>Личный кабинет</h1>
-    <h2>Приветствуем тебя белый господин  {{users.name}}</h2>
-    <button v-on:click="clickEdit">Редактировать</button>
-    <button v-on:click="clickDelete">Удалить</button>
-
+    <div>
+        <div>
+            <h1>Личный кабинет</h1>
+        </div>
+        <div>
+            <h2>Приветствуем тебя белый господин</h2>
+        </div>
+        <div class="my-frame">
+            <h2><strong>Имя: </strong>{{users.name}}</h2>
+        </div>
+        <div class="my-frame">
+            <h2><strong>Фамилия: </strong>{{users.surname}}</h2>
+        </div>
+        <div class="my-frame">
+            <h2><strong>E-mail: </strong>{{users.email}}</h2>
+        </div>
+        <div class="my-div-centr">
+            <div>
+                <my-button v-on:click="clickEdit">Редактировать</my-button>
+            </div>
+            <div>
+                <my-button v-on:click="clickDelete">Удалить</my-button>
+            </div>
+        </div>
+    </div>
 
 
 </template>
 
 <script>
     import axios from 'axios'
+    import MyButton from './UI/MyButton.vue'
 
     export default {
         name: "Answer",
+        components: {
+            MyButton
+        },
         data() {
             return{
                 id: 0,
@@ -85,6 +109,18 @@
 
     }
 </script>
+<style>
+    
+    .my-div-centr {
+        display: flex;
+        justify-content: center;
+    }
+    .my-frame {
+        margin: 10px;
+        border: 2px solid teal
+    }
+
+</style>
 
 
 

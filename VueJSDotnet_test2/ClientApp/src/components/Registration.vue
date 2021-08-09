@@ -24,7 +24,7 @@
         <span id='hiddenTwoPassword' style="display: none">{{errorMessage}}</span>
         <br>
         <br>
-        <button v-on:click="clickone">OK</button>
+        <my-button v-on:click="clickone">OK</my-button>
 
 
         <br>
@@ -39,8 +39,8 @@
 
 <script>
     import axios from 'axios'
-   // import router from "../router/index.js";
-
+    // import router from "../router/index.js";
+    import MyButton from './UI/MyButton.vue'
 
     export default {
 
@@ -53,7 +53,7 @@
             }
         },
         components: {
-
+            MyButton
         },
         props: {
 

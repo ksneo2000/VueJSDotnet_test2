@@ -82,7 +82,10 @@ namespace VueJSDotnet_test2.Controllers
             var newUser = new User
             {
                 Name = userRegistration.Name,
-                Password = userRegistration.Password
+                Password = userRegistration.Password,
+                Surname=userRegistration.Surname,
+                Email=userRegistration.Email
+
             };
 
             using (var vueJSTestDB = new VueJSTestContext())
