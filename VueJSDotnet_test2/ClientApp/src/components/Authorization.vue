@@ -2,23 +2,51 @@
     <div class="hello">
 
         <h1>Authorization</h1>
+            <form @submit.prevent>
+                <div>
+                    <div>
 
-       
-        <p><b>Введите логин:</b><br></p>
-        <input class="input" v-model="name" type="text" id="name" name="name" />
-        <p><b>Введите пароль:</b><br></p>
-        <input class="input" v-model="password" type=password id="password" name="password" size="38" />
-        <my-button>O</my-button>
-        <p><b>Если нет учетной записи пройдите регистрацию:</b><br></p>
-        <p><b><a href="Registration">ТУТ</a></b><br></p>
-        <br>
-        <br>
-        <my-button v-on:click="clickone">OK</my-button>
-       
+                        <div>
+                            <p><b>Введите логин:</b><br></p>
+                        </div>
+                        <div>
+                            <my-input v-model="name"
+                                      type="text"
+                                      placeholder="Имя" />
+                        </div>
 
-        <br>
+                    </div>
+                    <div>
+                        <div>
+                            <p><b>Введите пароль:</b><br></p>
+                        </div>
 
-        <img src="../assets/logo.png" />
+                        <div>
+                            <div>
+                                <my-input 
+                                       v-model="password" 
+                                       type=password 
+                                       placeholder="Пароль" />
+                            </div>
+                            <div>
+                                <my-button>O</my-button>
+                            </div>
+                            
+                        </div>
+                    </div>
+                        <p><b>Если нет учетной записи пройдите регистрацию:</b><br></p>
+                    <p><b><a href="Registration">ТУТ</a></b><br></p>
+                    <br>
+                    <br>
+                    <my-button v-on:click="clickone">OK</my-button>
+                </div>
+                
+
+            </form>
+
+            <br>
+
+            <img src="../assets/logo.png" />
 
 
     </div>
@@ -27,49 +55,56 @@
 <script>
     import axios from 'axios'
     import router from "../router/index.js";
-    import MyButton from './UI/MyButton.vue'
+    import MyButton from './UI/MyButton.vue';
+    import MyInput from './UI/MyInput.vue';
+    
 
- export default {
+    export default {
 
 
-  name: 'Autorization',
+        name: 'Autorization',
+
         components: {
-
             MyButton,
-         },
-  props: {
-      
-  },
-  methods: {
-      clickone: function () {
-          const article = { name: this.name, password: this.password };
+            MyInput,
+           
+        },
+
+        
+        data() {
+            return {
+                name: '',
+            }
+        },
+
+        methods: {
+            clickone() {
+                const article = { name: this.name, password: this.password };
          
-          axios({
-              method: 'Post',
-              url: '/UserRegistration/Autorization',
-              data: article
+                axios({
+                    method: 'Post',
+                    url: '/UserRegistration/Autorization',
+                    data: article
 
-          })
-              .then(function (response) {
-                  console.log(response.data);
+                })
+                    .then(function (response) {
+                        console.log(response.data);
 
-                  router.push({ path: '/Answer/' + response.data})
-              })
-              .catch(function (error) {
-                  console.log(error);
-              });
+                        router.push({ path: '/Answer/' + response.data})
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                    });
 
-          console.log(article);
+                console.log(article);
 
-      }
-      
+            }
           
-          
-  }
+        }
         
   
 
-}
+    }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
@@ -88,10 +123,5 @@ li {
 a {
   color: #42b983;
 }
-    .input {
-        width: 50%;
-        border: 1px solid teal;
-        padding: 10px 15px;
-        margin-top: 15px;
-    }
+    
 </style>

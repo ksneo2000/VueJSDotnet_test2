@@ -42,6 +42,7 @@ const routes = [
         component: Answer,
 
     }
+    
 ];
 
 const router = createRouter({

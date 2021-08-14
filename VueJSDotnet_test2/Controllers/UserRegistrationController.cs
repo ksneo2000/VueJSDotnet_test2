@@ -147,7 +147,7 @@ namespace VueJSDotnet_test2.Controllers
         }
         [HttpPost("AnswerDelete")]
 
-        public User AnswerDelete([FromBody] User imputUser)
+        public string AnswerDelete([FromBody] User imputUser)
         {
             // HACK
             var vrUser = new User();
@@ -155,9 +155,10 @@ namespace VueJSDotnet_test2.Controllers
             {
                 if (vueJSTestDB.Users.SingleOrDefault(user => user.ID == imputUser.ID) != null)
                 {
-                    vrUser.ID = vueJSTestDB.Users.SingleOrDefault(user=>user.ID==imputUser.ID).ID;
-                    vrUser.Name = vueJSTestDB.Users.SingleOrDefault(user => user.ID == imputUser.ID).Name;
-                    return vrUser;
+                    vrUser = vueJSTestDB.Users.SingleOrDefault(user=>user.ID==imputUser.ID);
+                    //DeleteOnSubmit(vrUser);
+
+                    return "Удаление успешно";
                 }
 
 
@@ -165,7 +166,7 @@ namespace VueJSDotnet_test2.Controllers
 
 
 
-            return vrUser;
+            return "нихрена";
         }
 
     }

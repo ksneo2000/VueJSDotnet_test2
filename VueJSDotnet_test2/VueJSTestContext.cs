@@ -20,5 +20,8 @@ namespace VueJSDotnet_test2
         {
             optionsBuilder.UseSqlServer("Server=DESKTOP-CUCHL8L\\SQLEXPRESS;Database=VueJSTestDB;Trusted_Connection=True;");
         }
+
+        
+        
     }
 }

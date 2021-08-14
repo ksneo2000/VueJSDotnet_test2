@@ -15,13 +15,25 @@
         <div class="my-frame">
             <h2><strong>E-mail: </strong>{{users.email}}</h2>
         </div>
-        <div class="my-div-centr">
-            <div>
-                <my-button v-on:click="clickEdit">Редактировать</my-button>
+        <form @submit.prevent>
+            <div class="my-div-centr">
+                <div>
+                    <my-button v-on:click="clickEdit">Редактировать</my-button>
+                </div>
+                <div>
+                    <my-button v-on:click="clickDelete">Удалить</my-button>
+                </div>
             </div>
             <div>
-                <my-button v-on:click="clickDelete">Удалить</my-button>
+                <my-dialog v-model:show="dialogVisible">
+                    <my-delete v-model:show="dialogVisible">
+
+                    </my-delete>
+                </my-dialog>
             </div>
+        </form>
+        <div>
+
         </div>
     </div>
 
@@ -31,39 +43,29 @@
 <script>
     import axios from 'axios'
     import MyButton from './UI/MyButton.vue'
+    import MyDelete from './UI/MyDelete.vue'
+    import MyDialog from './UI/MyDialog.vue'
+
+    
 
     export default {
         name: "Answer",
         components: {
-            MyButton
+            MyButton,
+            MyDelete,
+            MyDialog,
         },
         data() {
             return{
                 id: 0,
                 vrID: 0,
-                users: []
+                users: [],
+                dialogVisible: false,
             }
             
         },
         methods: {
-            rForecasts: function () {
-                var vrID = parseInt(this.$route.params.id);
-                const article = { id: vrID };
-                axios({
-                    method: 'Post',
-                    url: '/UserRegistration/Answer',
-                    data: article
-
-                })
-                    .then((response) => {
-                        this.users = response.data;
-                       
-                    })
-                    .catch(function (error) {
-                        console.log(error);
-                    });
-                console.log(article);
-            },
+            
             clickEdit: function () {
                 var vrID = parseInt(this.$route.params.id);
                 const article = { id: vrID };
@@ -83,23 +85,8 @@
                 console.log(article);
 
             },
-            clickDelete: function () {
-                var vrID = parseInt(this.$route.params.id);
-                const article = { id: vrID };
-                axios({
-                    method: 'Post',
-                    url: '/UserRegistration/AnswerDelete',
-                    data: article
-
-                })
-                    .then(function (response) {
-                        console.log(response.data);
-
-                    })
-                    .catch(function (error) {
-                        console.log(error);
-                    });
-                console.log(article);
+            clickDelete() {
+                this.dialogVisible = true;
 
             }
         },
