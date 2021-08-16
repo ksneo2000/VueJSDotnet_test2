@@ -5,6 +5,7 @@ import FetchData from "@/components/FetchData.vue";
 import Registration from "@/components/Registration.vue";
 import Authorization from "@/components/Authorization.vue";
 import Answer from "@/components/Answer.vue";
+import Edit from "@/components/Edit.vue"
 
 
 
@@ -40,6 +41,12 @@ const routes = [
         path: "/Answer/:id",
         name: "Answer",
         component: Answer,
+
+    },
+    {
+        path: "/Edit/:id",
+        name: "Edit",
+        component: Edit,
 
     }
     

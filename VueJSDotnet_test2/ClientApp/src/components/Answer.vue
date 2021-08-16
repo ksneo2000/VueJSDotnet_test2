@@ -27,7 +27,7 @@
             <div>
                 <my-dialog v-model:show="dialogVisible">
                     <my-delete v-model:show="dialogVisible">
-
+                        
                     </my-delete>
                 </my-dialog>
             </div>
@@ -42,6 +42,7 @@
 
 <script>
     import axios from 'axios'
+    import router from "../router/index.js";
     import MyButton from './UI/MyButton.vue'
     import MyDelete from './UI/MyDelete.vue'
     import MyDialog from './UI/MyDialog.vue'
@@ -65,8 +66,29 @@
             
         },
         methods: {
+            AllAnswer() {
+
+                var vrID = parseInt(this.$route.params.id);
+                const article = { id: vrID };
+                axios({
+                    method: 'Post',
+                    url: '/UserRegistration/Answer',
+                    data: article
+
+                })
+                    .then((response) => {
+                        this.users = response.data;
+                        
+
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                    });
+                console.log(article);
+            },
+
             
-            clickEdit: function () {
+            clickEdit() {
                 var vrID = parseInt(this.$route.params.id);
                 const article = { id: vrID };
                 axios({
@@ -77,6 +99,7 @@
                 })
                     .then(function (response) {
                         console.log(response.data);
+                        router.push({ path: '/Edit/' + response.data })
 
                     })
                     .catch(function (error) {
@@ -85,13 +108,14 @@
                 console.log(article);
 
             },
+
             clickDelete() {
                 this.dialogVisible = true;
 
             }
         },
         mounted() {
-            this.rForecasts();
+            this.AllAnswer();
         }
 
     }

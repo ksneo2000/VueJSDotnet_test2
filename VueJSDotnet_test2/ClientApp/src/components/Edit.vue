@@ -1,91 +1,103 @@
 ﻿<template>
     <h1>Личный кабинет</h1>
-    <h2>Приветствуем тебя белый господин  {{users.name}}</h2>
-    <button v-on:click="clickEdit">Редактировать</button>
-    <button v-on:click="clickDelete">Удалить</button>
+    <h2>Измени меня белый господин </h2>
 
+    <div>
+        <div>
+            <h2><strong>Имя: </strong>{{users.name}}</h2>
+        </div>
+        <div>
+            <my-input placeholder="неполучается">
+
+            </my-input>
+        </div>
+    </div>
+    <div>
+        <div>
+            <h2><strong>Фамилия: </strong>{{users.surname}}</h2>
+        </div>
+        <div>
+            <my-input placeholder="неполучается">
+
+            </my-input>
+        </div>
+    </div>
+    <div>
+        <div>
+            <h2><strong>E-mail: </strong>{{users.email}}</h2>
+        </div>
+        <div>
+            <my-input placeholder="неполучается">
+
+            </my-input>
+        </div>
+    </div>
+    <div>
+        <my-button>Сохранить</my-button>
+    </div>
 
 
 </template>
 
 <script>
-    import axios from 'axios'
+    import axios from 'axios';
+    import MyInput from './UI/MyInput.vue';
+    import MyButton from './UI/MyButton.vue';
 
     export default {
-        name: "Answer",
+        name: "Edit",
+        components: {
+           
+            MyInput,
+            MyButton,
+
+        },
         data() {
-            return{
+            return {
                 id: 0,
                 vrID: 0,
-                users: []
+                users: [],
+                
             }
             
         },
         methods: {
-            rForecasts: function () {
+            AllEdit() {
                 var vrID = parseInt(this.$route.params.id);
                 const article = { id: vrID };
                 axios({
                     method: 'Post',
-                    url: '/UserRegistration/Answer',
+                    url: '/UserRegistration/Edit',
                     data: article
 
                 })
                     .then((response) => {
                         this.users = response.data;
-                       
+
+
                     })
                     .catch(function (error) {
                         console.log(error);
                     });
                 console.log(article);
             },
-            clickEdit: function () {
-                var vrID = parseInt(this.$route.params.id);
-                const article = { id: vrID };
-                axios({
-                    method: 'Post',
-                    url: '/UserRegistration/AnswerEdit',
-                    data: article
 
-                })
-                    .then(function (response) {
-                        console.log(response.data);
-
-                    })
-                    .catch(function (error) {
-                        console.log(error);
-                    });
-                console.log(article);
-
-            },
-            clickDelete: function () {
-                var vrID = parseInt(this.$route.params.id);
-                const article = { id: vrID };
-                axios({
-                    method: 'Post',
-                    url: '/UserRegistration/AnswerDelete',
-                    data: article
-
-                })
-                    .then(function (response) {
-                        console.log(response.data);
-
-                    })
-                    .catch(function (error) {
-                        console.log(error);
-                    });
-                console.log(article);
-
-            }
+           
         },
         mounted() {
-            this.rForecasts();
+            this.AllEdit();
         }
 
     }
 </script>
 
+<style>
+    .my-frame {
+        margin: 10px;
+        border: 2px solid teal
+    }
+
+</style>
 
 
 
