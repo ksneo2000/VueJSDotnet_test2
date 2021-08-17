@@ -186,5 +186,34 @@ namespace VueJSDotnet_test2.Controllers
 
         }
 
+        [HttpPost("Alteration_Edit")]
+
+        public string Alteration_Edit([FromBody] User inputUser)
+        {
+            var vrUser = new User();
+            using (var vueJSTestDB = new VueJSTestContext())
+            {
+                if (vueJSTestDB.Users.SingleOrDefault(user => user.ID == inputUser.ID) != null)
+                {
+                    vrUser = vueJSTestDB.Users.SingleOrDefault(user => user.ID == inputUser.ID);
+                    if (vrUser != inputUser)
+                    {
+                        vrUser.Name = inputUser.Name;
+                        vrUser.Surname = inputUser.Surname;
+                        vrUser.Email = inputUser.Email;
+
+                    }
+                    vueJSTestDB.SaveChanges();
+                    return vueJSTestDB.Users.SingleOrDefault(user => user.ID == inputUser.ID).ID.ToString(); ;
+                }
+
+                return "что-то пошло не так";
+            }
+
+
+            
+        
+        }
+
     }
 }

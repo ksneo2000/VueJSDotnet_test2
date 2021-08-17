@@ -27,10 +27,13 @@
             <div>
                 <my-dialog v-model:show="dialogVisible">
                     <my-delete v-model:show="dialogVisible">
-                        
+
                     </my-delete>
                 </my-dialog>
             </div>
+            
+
+
         </form>
         <div>
 
@@ -43,9 +46,11 @@
 <script>
     import axios from 'axios'
     import router from "../router/index.js";
-    import MyButton from './UI/MyButton.vue'
-    import MyDelete from './UI/MyDelete.vue'
-    import MyDialog from './UI/MyDialog.vue'
+    import MyButton from './UI/MyButton.vue';
+    import MyDelete from './UI/MyDelete.vue';
+    import MyDialog from './UI/MyDialog.vue';
+    
+    
 
     
 
@@ -55,13 +60,15 @@
             MyButton,
             MyDelete,
             MyDialog,
+            
+            
         },
         data() {
             return{
                 id: 0,
                 vrID: 0,
                 users: [],
-                dialogVisible: false,
+                
             }
             
         },
@@ -112,7 +119,8 @@
             clickDelete() {
                 this.dialogVisible = true;
 
-            }
+            },
+            
         },
         mounted() {
             this.AllAnswer();
