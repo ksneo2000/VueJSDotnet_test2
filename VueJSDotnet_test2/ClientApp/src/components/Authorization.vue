@@ -21,15 +21,16 @@
                             <p><b>Введите пароль:</b><br></p>
                         </div>
 
-                        <div class="my-div-centr">
-                            <div margin="0px">
-                                <my-input 
+                        <div class="my-div-centr" >
+                            <div>
+                                <my-input class="my-inp"
+                                          
                                        v-model="password" 
                                        type=password 
                                        placeholder="Пароль" />
                             </div>
-                            <div margin="0px">
-                                <my-button>O</my-button>
+                            <div>
+                                <my-button class="my-btn">O</my-button>
                             </div>
                             
                         </div>
@@ -123,11 +124,21 @@
     a {
         color: #42b983;
     }
-    
+
     .my-div-centr {
         display: flex;
+        margin: 0 auto;
         justify-content: center;
-        margin: 0px;
+        border: 1px solid teal;
+        width: 70%;
+    }
+    .my-btn{
+        margin-top:5px;
+    }
 
+    .my-inp {
+        margin-top: 5px;
+        border: none;
+        
     }
 </style>

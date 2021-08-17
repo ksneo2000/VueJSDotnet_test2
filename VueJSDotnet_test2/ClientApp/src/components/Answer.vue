@@ -68,6 +68,7 @@
                 id: 0,
                 vrID: 0,
                 users: [],
+                dialogVisible: false,
                 
             }
             
