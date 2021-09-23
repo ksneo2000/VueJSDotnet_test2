@@ -23,7 +23,13 @@
                         <li class="nav-item">
                             <router-link :to="{ name: 'Authorization' }" class="nav-link text-dark">Вход</router-link>
                         </li>
-                        
+                        <li class="nav-item">
+                            <router-link :to="{ name: 'Alphabet' }" class="nav-link text-dark">Temp</router-link>
+                        </li>
+                        <li class="nav-item">
+                            <router-link :to="{ name: 'TempKS' }" class="nav-link text-dark">TempPas</router-link>
+                        </li>
+
 
                     </ul>
                 </div>

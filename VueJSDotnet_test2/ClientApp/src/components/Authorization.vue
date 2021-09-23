@@ -21,19 +21,8 @@
                             <p><b>Введите пароль:</b><br></p>
                         </div>
 
-                        <div class="my-div-centr" >
-                            <div>
-                                <my-input class="my-inp"
-                                          
-                                       v-model="password" 
-                                       type=password 
-                                       placeholder="Пароль" />
-                            </div>
-                            <div>
-                                <my-button class="my-btn">O</my-button>
-                            </div>
-                            
-                        </div>
+                        <my-input-password v-model="password" />
+                        
                     </div>
                         <p><b>Если нет учетной записи пройдите регистрацию:</b><br></p>
                     <p><b><a href="Registration">ТУТ</a></b><br></p>
@@ -58,6 +47,7 @@
     import router from "../router/index.js";
     import MyButton from './UI/MyButton.vue';
     import MyInput from './UI/MyInput.vue';
+    import MyInputPassword from './UI/MyInputPassword';
     
 
     export default {
@@ -68,6 +58,7 @@
         components: {
             MyButton,
             MyInput,
+            MyInputPassword,
            
         },
 
@@ -75,6 +66,7 @@
         data() {
             return {
                 name: '',
+                password: ''
             }
         },
 

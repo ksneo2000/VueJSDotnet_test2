@@ -5,7 +5,9 @@ import FetchData from "@/components/FetchData.vue";
 import Registration from "@/components/Registration.vue";
 import Authorization from "@/components/Authorization.vue";
 import Answer from "@/components/Answer.vue";
-import Edit from "@/components/Edit.vue"
+import Edit from "@/components/Edit.vue";
+import Alphabet from "@/components/Alphabet.vue";
+import TempKS from "@/components/TempKS.vue";
 
 
 
@@ -48,7 +50,18 @@ const routes = [
         name: "Edit",
         component: Edit,
 
+    },
+    {
+        path: "/Alphabet",
+        name: "Alphabet",
+        component: Alphabet,
+    },
+    {
+        path: "/TempKS",
+        name: "TempKS",
+        component: TempKS,
     }
+
     
 ];
 
