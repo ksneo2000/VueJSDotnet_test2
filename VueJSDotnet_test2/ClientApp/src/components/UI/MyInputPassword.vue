@@ -1,11 +1,9 @@
 ﻿<template>
     <div>
-        <div>
-            <p><b>Введите пароль:</b><br></p>
-        </div>
+        
 
         <div class="my-div-centr">
-            <!--<input :value="modelValue" @input="updateInput" class="input" type="text" />-->
+            
             <input class="my-inp"
             position="relative"
             :value="modelValue"
@@ -14,7 +12,7 @@
             placeholder="Пароль" />
 
             <div>
-                <button class="my-btn">зю</button>
+                <button class="my-btn">🔍</button>
             </div>
 
         </div>
