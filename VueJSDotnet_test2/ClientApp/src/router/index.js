@@ -8,6 +8,8 @@ import Answer from "@/components/Answer.vue";
 import Edit from "@/components/Edit.vue";
 import Alphabet from "@/components/Alphabet.vue";
 import TempKS from "@/components/TempKS.vue";
+import EditText from "@/components/EditText.vue";
+
 
 
 
@@ -60,6 +62,11 @@ const routes = [
         path: "/TempKS",
         name: "TempKS",
         component: TempKS,
+    },
+    {
+        path: "/EditText",
+        name: "EditText",
+        component: EditText,
     }
 
     

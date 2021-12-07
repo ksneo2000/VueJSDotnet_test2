@@ -29,6 +29,9 @@
                         <li class="nav-item">
                             <router-link :to="{ name: 'TempKS' }" class="nav-link text-dark">TempPas</router-link>
                         </li>
+                        <li class="nav-item">
+                            <router-link :to="{ name: 'EditText' }" class="nav-link text-dark">ЗагрузкаТекста</router-link>
+                        </li>
 
 
                     </ul>

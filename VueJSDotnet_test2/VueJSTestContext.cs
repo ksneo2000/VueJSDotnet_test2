@@ -8,6 +8,7 @@ namespace VueJSDotnet_test2
 {
     public class VueJSTestContext : DbContext
     {
+        public DbSet <Text> Texts { get; set; }
         public DbSet <User> Users { get; set; }
 
 

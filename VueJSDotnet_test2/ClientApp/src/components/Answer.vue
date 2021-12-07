@@ -6,6 +6,9 @@
         <div>
             <h2>Приветствуем тебя белый господин</h2>
         </div>
+        <div>
+            <my-button>Начать</my-button>
+        </div>
         <div class="my-frame">
             <h2><strong>Имя: </strong>{{users.name}}</h2>
         </div>
