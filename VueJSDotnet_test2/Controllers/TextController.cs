@@ -13,14 +13,15 @@ namespace VueJSDotnet_test2.Controllers
     {
         [HttpPost("TextInput")]
 
-        public string TextInput ([FromBody] Text text)
+        public string TextInput([FromBody] Text textinput)
         {
-
+            //Функция получает экземпляр Text из FrontTend и создает новую запись в 
+            //базе данных
 
             var newText = new Text
             {
-                Name = text.Name,
-                MyСontent = text.MyСontent
+                Name = textinput.Name,
+                СonText = textinput.СonText
 
             };
             using (var vueJSTestDB = new VueJSTestContext())
@@ -30,7 +31,7 @@ namespace VueJSDotnet_test2.Controllers
             }
 
 
-            return "у меня получилось";
+            return "Текст успешно загружен";
         }
 
 

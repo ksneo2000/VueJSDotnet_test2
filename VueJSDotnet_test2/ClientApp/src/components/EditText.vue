@@ -50,11 +50,11 @@
         },
 
         methods: {
-            clickEditText() {
+            clickEditText: function () {
                 const article = {
                     
                     Name: this.myTextName,
-                    MyContent: this.myTextContent
+                    СonText: this.myTextContent
                 };
 
                 axios({

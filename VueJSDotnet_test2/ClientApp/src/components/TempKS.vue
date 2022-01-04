@@ -3,7 +3,7 @@
         Это временная страница для рабочих экспериментов
     </h1>
     <div>
-        <my-button>
+        <my-button v-on:click ="clickLoadingText">
             Загрузка текста
         </my-button>
     </div>
@@ -54,6 +54,28 @@
                 this.letter = value;
                 this.mystring = this.mystring + this.letter;
                 console.log(this.letter);
+
+            },
+            clickLoadingText() {
+                //todo функция должна получать текст из базы
+                //const article = { name: this.name, password: this.password };
+
+                //axios({
+                //    method: 'Post',
+                //    url: '/UserRegistration/Autorization',
+                //    data: article
+
+                //})
+                //    .then(function (response) {
+                //        console.log(response.data);
+
+                        
+                //    })
+                //    .catch(function (error) {
+                //        console.log(error);
+                //    });
+
+                console.log("нажмалось");
             },
             
 
