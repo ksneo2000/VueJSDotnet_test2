@@ -2,19 +2,19 @@
     <h1>
         Это временная страница для рабочих экспериментов
     </h1>
+    
     <div>
-        <my-button v-on:click ="clickLoadingText">
+        <my-button v-on:click="clickLoadingText">
             Загрузка текста
         </my-button>
     </div>
-    <my-input-alphabet v-model="mystring" disabled>{{mystring}}</my-input-alphabet>
+    <my-input-alphabet v-model="mystring" disabled>{{text.СonText}}</my-input-alphabet>
     <br />
     <div v-for="alf in alfs" v-bind:key="alf">
         <my-button-letter v-for="cols in alf"
                           v-bind:key="cols"
                           v-model="cols.a"
-                          v-on:clicklettor="clickKS"
-                          >
+                          v-on:clicklettor="clickKS">
             {{cols.a}}
         </my-button-letter>
     </div>
@@ -23,7 +23,9 @@
 </template>
 
 <script>
+    import axios from 'axios';
     import MyButton from './UI/MyButton.vue';
+   
     import MyInputAlphabet from './UI/MyInputAlphabet.vue';
     import MyButtonLetter from './UI/MyButtonLetter.vue';
 
@@ -32,6 +34,7 @@
         name: "Alphabet",
         components: {
             MyButton,
+           
             MyInputAlphabet,
             MyButtonLetter,
         },
@@ -45,6 +48,8 @@
                 ],
                 letter: '',
                 mystring: '',
+                nameText: 'neo2000',
+                text: [],
 
             }
         },
@@ -58,24 +63,26 @@
             },
             clickLoadingText() {
                 //todo функция должна получать текст из базы
-                //const article = { name: this.name, password: this.password };
 
-                //axios({
-                //    method: 'Post',
-                //    url: '/UserRegistration/Autorization',
-                //    data: article
+                const article = { name: this.nameText};
 
-                //})
-                //    .then(function (response) {
-                //        console.log(response.data);
+                axios({
+                    method: 'Post',
+                    url: '/Text/TextExport',
+                    data: article
+
+                })
+                    .then((response) => {
+                        this.users = response.data;
 
                         
-                //    })
-                //    .catch(function (error) {
-                //        console.log(error);
-                //    });
-
-                console.log("нажмалось");
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                    });
+                //console.log(response.data);
+                console.log(article);
+                
             },
             
 

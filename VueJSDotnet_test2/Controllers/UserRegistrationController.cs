@@ -79,6 +79,7 @@ namespace VueJSDotnet_test2.Controllers
 
             userRegistration.Password = GetHash(userRegistration.Password);
 
+            
             var newUser = new User
             {
                 Name = userRegistration.Name,

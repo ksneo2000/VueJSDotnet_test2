@@ -33,7 +33,30 @@ namespace VueJSDotnet_test2.Controllers
 
             return "Текст успешно загружен";
         }
+        [HttpPost("TextExport")]
 
+        public Text TextExport([FromBody] Text textexport)
+        {
+            //Функция получает экземпляр Text из FrontTend и создает новую запись в 
+            //базе данных
+
+            var newText = new Text();
+            using (var vueJSTestDB = new VueJSTestContext())
+            {
+                if (vueJSTestDB.Texts.SingleOrDefault(text => text.Name == textexport.Name) != null)
+                {
+                    //up
+                    newText.ID = vueJSTestDB.Texts.SingleOrDefault(text => text.Name == textexport.Name).ID;
+                    newText.Name = vueJSTestDB.Texts.SingleOrDefault(text => text.Name == textexport.Name).Name;
+                    newText.СonText = vueJSTestDB.Texts.SingleOrDefault(text => text.Name == textexport.Name).СonText;
+                    
+                    return newText;
+                }
+
+            };
+            
+            return newText;
+        }
 
     }
 }

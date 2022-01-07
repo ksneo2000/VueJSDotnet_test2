@@ -88,6 +88,7 @@
                         console.log(error);
                     });
                 console.log(article);
+
             },
             Alteration_Edit() {
                 var article = this.users;
