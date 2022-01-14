@@ -21,7 +21,7 @@ namespace VueJSDotnet_test2.Controllers
             var newText = new Text
             {
                 Name = textinput.Name,
-                СonText = textinput.СonText
+                ConText = textinput.ConText
 
             };
             using (var vueJSTestDB = new VueJSTestContext())
@@ -48,7 +48,7 @@ namespace VueJSDotnet_test2.Controllers
                     //up
                     newText.ID = vueJSTestDB.Texts.SingleOrDefault(text => text.Name == textexport.Name).ID;
                     newText.Name = vueJSTestDB.Texts.SingleOrDefault(text => text.Name == textexport.Name).Name;
-                    newText.СonText = vueJSTestDB.Texts.SingleOrDefault(text => text.Name == textexport.Name).СonText;
+                    newText.ConText = vueJSTestDB.Texts.SingleOrDefault(text => text.Name == textexport.Name).ConText;
                     
                     return newText;
                 }

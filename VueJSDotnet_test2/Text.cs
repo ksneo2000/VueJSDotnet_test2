@@ -11,6 +11,6 @@ namespace VueJSDotnet_test2
 
         public string Name { get; set; }
 
-        public string СonText { get; set; }
+        public string ConText { get; set; }
     }
 }
